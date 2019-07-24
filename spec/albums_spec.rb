@@ -71,5 +71,14 @@ describe('.search') do
       expect(Album.search("black album")).to(eq([album]))
     end
   end
-
+describe('.sort') do
+    it("sort all albums alphabetically") do
+      album = Album.new("black album", 2000, "metallica", "heavy metal", nil)
+      album.save()
+      album2 = Album.new("an album", 1999, "xxx", "metal", nil)
+      album2.save()
+      binding.pry
+      # expect(Album.sort).to(eq([album]))
+    end
+  end
 end

@@ -27,6 +27,10 @@ class Album
     @@albums.values.select { |album| album.name == query }
   end
 
+  def self.sort
+    @@albums.values.sort
+  end
+
   def self.clear
     @@albums = {}
     @@total_rows = 0
