@@ -77,7 +77,6 @@ describe('.sort') do
       album.save()
       album2 = Album.new("an album", 1999, "xxx", "metal", nil)
       album2.save()
-      binding.pry
       # expect(Album.sort).to(eq([album]))
     end
   end
