@@ -1,4 +1,6 @@
 require 'pry'
+# require 'song'
+
 
 class Album
   attr_reader :id
@@ -12,6 +14,7 @@ class Album
     @year = year
     @artist = artist
     @genre = genre
+    # @songs = []
     @id = id || @@total_rows += 1 #ask about this
   end
 
@@ -51,6 +54,10 @@ class Album
 
   def delete
     @@albums.delete(self.id)
+  end
+
+  def songs
+    Song.find_by_album(self.id)
   end
 
 end

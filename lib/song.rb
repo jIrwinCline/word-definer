@@ -1,12 +1,13 @@
 class Song
   attr_reader :id
-  attr_accessor :name, :album_id
+  attr_accessor :name, :album_id, :songwriter
 
   @@songs = {}
   @@total_rows = 0
 
-  def initialize(name, album_id, id)
+  def initialize(name, album_id, id, songwriter)
     @name = name
+    @songwriter = songwriter
     @album_id = album_id
     @id = id || @@total_rows += 1
   end
@@ -29,12 +30,12 @@ class Song
     songs
   end
 
-  def songs
-    Song.find_by_album(self.id)
-  end
+  # def songs
+  #   Song.find_by_album(self.id)
+  # end
 
   def save
-    @@songs[self.id] = Song.new(self.name, self.album_id, self.id)
+    @@songs[self.id] = Song.new(self.name, self.album_id, self.id,self.songwriter)
   end
 
   def album
@@ -45,10 +46,11 @@ class Song
     @@songs[id]
   end
 
-  def update(name, album_id)
+  def update(name, album_id, songwriter)
     self.name = name
     self.album_id = album_id
-    @@songs[self.id] = Song.new(self.name, self.album_id, self.id)
+    self.songwriter = songwriter
+    @@songs[self.id] = Song.new(self.name, self.album_id, self.id, self.songwriter)
   end
 
   def delete
