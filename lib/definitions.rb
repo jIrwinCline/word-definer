@@ -22,4 +22,49 @@ class Definition
     @@definitions[id]
   end
 
-end
+  def ==(def_to_compare)
+    (self.text() == def_to_compare.text()) && (self.word_id() == def_to_compare.text())
+  end
+
+  def self.all
+    @@definitions.values()
+  end
+
+  def self.find_by_word(wrd_id)
+    definitions = []
+    @@definitions.values.each do |def|
+      if def.word_id == wrd_id
+        definitions.push(def)
+      end
+    end
+    definitions
+  end
+
+  def save
+    @@definitions[self.id] = Definition.new(self.text, self.word_id)
+  end
+
+  def word
+    Word.find(self.word_id)
+  end
+
+  def self.find(id)
+    @@definitions[id]
+  end
+
+  def update(text,word_id)
+    self.text = text
+    self.word_id = word_id
+    @@definitions[self.id] = Definition.new(self.text, self.word_id, self.id)
+  end
+
+  def delete
+    @@definitions.delete(self.id)
+  end
+
+  def self.clear
+    @@definitions = {}
+  end
+
+
+end#class
