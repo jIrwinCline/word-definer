@@ -1,6 +1,6 @@
 require 'rspec'
-require 'song'
-require 'albums'
+require 'definitions'
+require 'word'
 require 'pry'
 
 describe '#Song' do

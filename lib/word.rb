@@ -4,4 +4,7 @@ require 'pry'
 
 class Word
 
+  def initialize ()
+
+  end
 end

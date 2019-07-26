@@ -1,3 +1,3 @@
-class Def
+class Definition
 
 end

@@ -1,5 +1,5 @@
 require 'rspec'
-require 'words'
+require 'word'
 
 describe '#Word' do
   before(:each) do
