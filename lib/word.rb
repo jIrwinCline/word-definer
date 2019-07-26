@@ -1,5 +1,5 @@
 require 'pry'
-require 'definitions'
+# require 'definitions'
 
 
 class Word
