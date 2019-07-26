@@ -3,18 +3,16 @@ require 'pry'
 
 
 class Word
-  attr_reader :id
-  attr_accessor :word
-
+  attr_accessor :spelling, :id
   @@words = {}
-  @@next_id = 0
+  @@nextId = 0
 
-  def initialize (word, id=nil)
-    @word = word
-    @id = id || @@next_id += 1
+  def initialize(spelling, id=nil)
+    @spelling = spelling
+    @id = id || @@nextId += 1
   end
 
-  def self.all()
+  def self.all
     @@words.values()
   end
 
@@ -24,15 +22,14 @@ class Word
 
   def self.clear
     @@words = {}
-    @@next_id = 0
+    @@nextId = 0
   end
-
   def save
-    @@words[self.id] = Word.new(self.word,self.id)
+    @@words[self.id] = Word.new(self.spelling,self.id)
   end
-
+  #for testing
   def ==(word_to_compare)
-    self.word() == word_to_compare.word()
+    self.spelling() == word_to_compare.spelling()
   end
 
   def definitions

@@ -10,23 +10,32 @@ get('/') do
 end
 
 get('/words') do
-  @words = Word.all
+  @words = Word.all()
   erb(:words)
 end
 
-get ('/word/new') do
+get ('/words/new') do
   erb(:new_word)
 end
 
-get ('/word/:id') do
+get ('/words/:id') do
   @word = Word.find(params[:id].to_i())
   erb(:word)
 end
 
-post ('/word') do
-  word = params[:word]
-  word = Word.new(word)
+# post ('/words') do
+#   name = params[:word]
+#   word = Word.new(word)
+#   word.save()
+#   @words = Word.all()
+#   erb(:word)
+# end
+
+post ('/words') do
+  spelling = params[:spelling]
+  word = Word.new(spelling)
   word.save()
   @words = Word.all()
-  erb(:words)
+  erb(:word)
+  # redirect to('/words')
 end
