@@ -10,7 +10,7 @@ class Word
   @@next_id = 0
 
   def initialize (word, id=nil)
-    @word = words
+    @word = word
     @id = id || @@next_id += 1
   end
 
@@ -28,11 +28,11 @@ class Word
   end
 
   def save
-    @@words[self.id] = Word.new(self.name,self.id)
+    @@words[self.id] = Word.new(self.word,self.id)
   end
 
   def ==(word_to_compare)
-    self.name() == word_to_compare.word()
+    self.word() == word_to_compare.word()
   end
 
   def definitions
