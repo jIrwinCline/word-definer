@@ -32,9 +32,9 @@ class Definition
 
   def self.find_by_word(wrd_id)
     definitions = []
-    @@definitions.values.each do |def|
-      if def.word_id == wrd_id
-        definitions.push(def)
+    @@definitions.values.each do |defi|
+      if defi.word_id == wrd_id
+        definitions.push(defi)
       end
     end
     definitions

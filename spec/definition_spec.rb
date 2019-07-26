@@ -1,112 +1,111 @@
-# require 'rspec'
-# require 'definitions'
-# require 'word'
-# require 'pry'
-#
-# describe '#Definition' do
-#
-#   before(:each) do
-#     Album.clear()
-#     Song.clear()
-#     @album = Album.new("Giant Steps", 1990,"xxxx", "blues", nil)
-#     @album.save()
-#   end
-#
-#   describe('#==') do
-#     it("is the same song if it has the same attributes as another song") do
-#       song = Song.new("Naima", @album.id, nil, "person")
-#       song2 = Song.new("Naima", @album.id, nil, "person")
-#       expect(song).to(eq(song2))
-#     end
-#   end
-#
-#   describe('.all') do
-#     it("returns a list of all songs") do
-#       song = Song.new("Giant Steps", @album.id, nil, "person")
-#       song.save()
-#       song2 = Song.new("Naima", @album.id, nil, "person")
-#       song2.save()
-#       expect(Song.all).to(eq([song, song2]))
-#     end
-#   end
-#
-#   describe('.clear') do
-#     it("clears all songs") do
-#       song = Song.new("Giant Steps", @album.id, nil, "person")
-#       song.save()
-#       song2 = Song.new("Naima", @album.id, nil, "person")
-#       song2.save()
-#       Song.clear()
-#       expect(Song.all).to(eq([]))
-#     end
-#   end
-#
-#   describe('#save') do
-#     it("saves a song") do
-#       song = Song.new("Naima", @album.id, nil, "person")
-#       song.save()
-#       expect(Song.all).to(eq([song]))
-#     end
-#   end
-#
-#   describe('.find') do
-#     it("finds a song by id") do
-#       song = Song.new("Giant Steps", @album.id, nil, "person")
-#       song.save()
-#       song2 = Song.new("Naima", @album.id, nil, "person")
-#       song2.save()
-#       expect(Song.find(song.id)).to(eq(song))
-#     end
-#   end
-#
-#   describe('#update') do
-#     it("updates an song by id") do
-#       song = Song.new("Naima", @album.id, nil, "person")
-#       song.save()
-#       song.update("Mr. P.C.", @album.id, "songwriter")
-#       expect(song.name).to(eq("Mr. P.C."))
-#       expect(song.songwriter).to(eq("songwriter"))
-#     end
-#   end
-#
-#   describe('#delete') do
-#     it("deletes an song by id") do
-#       song = Song.new("Giant Steps", @album.id, nil, "person")
-#       song.save()
-#       song2 = Song.new("Naima", @album.id, nil, "guy")
-#       song2.save()
-#       song.delete()
-#       expect(Song.all).to(eq([song2]))
-#     end
-#   end
-#
-#   describe('.find_by_album') do
-#    it("finds songs for an album") do
-#      album2 = Album.new("Giant Steps", 1990,"xxxx", "blues", nil)
-#      album2.save
-#      song = Song.new("Naima", @album.id, nil, "person")
-#      song.save()
-#      song2 = Song.new("California", album2.id , nil, "person")
-#      song2.save()
-#      expect(Song.find_by_album(album2.id)).to(eq([song2]))
-#    end
-#  end
-#  describe('#songs') do
-#     it("returns an album's songs") do
-#       album = Album.new("Giant Steps", 1990,"xxxx", "blues", nil)
-#       album.save()
-#       song = Song.new("Naima", album.id, nil, "guy")
-#       song.save()
-#       song2 = Song.new("Cousin Mary", album.id, nil, "girl")
-#       song2.save()
-#       expect(album.songs).to(eq([song, song2]))
-#     end
-#   end
-#   describe('#album') do
-#     it("finds the album a song belongs to") do
-#       song = Song.new("Naima", @album.id, nil, "person")
-#       song.save()
-#       expect(song.album()).to(eq(@album))
-#     end
-#   end
-# end
+require 'rspec'
+require 'definitions'
+require 'word'
+require 'pry'
+
+describe '#Definition' do
+
+  before(:each) do
+    Word.clear()
+    Definition.clear()
+    @word = Word.new("this")
+    @word.save()
+  end
+
+  describe('#==') do
+    it("is the same definition if it has the same attributes as another definition") do
+      definition = Definition.new("definition", @word.id)
+      definition2 = Definition.new("definition", @word.id, nil, "person")
+      expect(definition).to(eq(definition2))
+    end
+  end
+
+  describe('.all') do
+    it("returns a list of all definitions") do
+      definition = Definition.new("definition", @word.id)
+      definition.save()
+      definition2 = Definition.new("definition", @word.id)
+      definition2.save()
+      expect(Definition.all).to(eq([definition, definition2]))
+    end
+  end
+
+  describe('.clear') do
+    it("clears all definitions") do
+      definition = Definition.new("Giant Steps", @word.id)
+      definition.save()
+      definition2 = Definition.new("definition", @word.id)
+      definition2.save()
+      Definition.clear()
+      expect(Definition.all).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it("saves a definition") do
+      definition = Definition.new("definition", @word.id)
+      definition.save()
+      expect(Definition.all).to(eq([definition]))
+    end
+  end
+
+  describe('.find') do
+    it("finds a definition by id") do
+      definition = Definition.new("definition", @word.id)
+      definition.save()
+      definition2 = Definition.new("definition", @word.id)
+      definition2.save()
+      expect(Definition.find(definition.id)).to(eq(definition))
+    end
+  end
+
+  describe('#update') do
+    it("updates an definition by id") do
+      definition = Definition.new("definition", @word.id)
+      definition.save()
+      definition.update("newDefinition", @word.id)
+      expect(definition.text).to(eq("newDefinition"))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes a definition by id") do
+      definition = Definition.new("definition", @word.id)
+      definition.save()
+      definition2 = Definition.new("definition", @word.id)
+      definition2.save()
+      definition.delete()
+      expect(Definition.all).to(eq([definition2]))
+    end
+  end
+
+  describe('.find_by_word') do
+   it("finds definitions for an word") do
+     word2 = Word.new("thing")
+     word2.save
+     definition = Definition.new("definition", @word.id)
+     definition.save()
+     definition2 = Definition.new("definition2", word2.id)
+     definition2.save()
+     expect(Definition.find_by_word(word2.id)).to(eq([definition2]))
+   end
+ end
+ describe('#definitions') do
+    it("returns an word's definitions") do
+      word = Word.new("this")
+      word.save()
+      definition = Definition.new("definition", word.id)
+      definition.save()
+      definition2 = Definition.new("Cousin Mary", word.id)
+      definition2.save()
+      expect(word.definitions).to(eq([definition, definition2]))
+    end
+  end
+  describe('#word') do
+    it("finds the word a definition belongs to") do
+      definition = Definition.new("definition", @word.id)
+      definition.save()
+      expect(definition.word()).to(eq(@word))
+    end
+  end
+end
