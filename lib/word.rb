@@ -3,16 +3,19 @@ require 'pry'
 
 
 class Word
-  attr_accessor :spelling, :id
+  attr_reader :id
+  attr_accessor :spelling
+
   @@words = {}
-  @@nextId = 0
+  @@total_rows = 0
 
   def initialize(spelling, id=nil)
     @spelling = spelling
-    @id = id || @@nextId += 1
+    # @songs = []
+    @id = id || @@total_rows += 1 #ask about this
   end
 
-  def self.all
+  def self.all()
     @@words.values()
   end
 
@@ -20,19 +23,37 @@ class Word
     @@words[id]
   end
 
+  def self.search(query)
+    @@words.values.select { |word| word.spelling == query }
+  end
+
+  def self.sort
+    @@words.values.sort
+  end
+
   def self.clear
     @@words = {}
-    @@nextId = 0
+    @@total_rows = 0
   end
+
   def save
     @@words[self.id] = Word.new(self.spelling,self.id)
   end
-  #for testing
+
   def ==(word_to_compare)
     self.spelling() == word_to_compare.spelling()
   end
 
-  def definitions
+  def update(spelling)
+    self.spelling = spelling
+    @@words[self.id] = Word.new(self.spelling,self.id)
+  end
+
+  def delete
+    @@words.delete(self.id)
+  end
+
+  def songs
     Definition.find_by_word(self.id)
   end
 

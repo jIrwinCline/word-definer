@@ -1,29 +1,30 @@
-<h4><%= @words.spelling %></h4>
+<h4>Word: <%= @word.spelling %></h4>
 
-<h3>Definition</h3>
+<h3>Album Songs</h3>
 
-  <% if @album.definitions %>
+  <% if @word.definitions%>
     <ul>
-      <% @album.definitions.each do |definition| %>
-        <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.text %></a></li>
+      <% @word.definitions.each do |definition| %>
+        <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.name %></a></li>
       <% end %>
     </ul>
   <% else %>
-    <p>No definitions added</p>
+    <p>There are no definitions listed for this word yet.</p>
   <% end %>
 
-<h4>Add a Definition:</h4>
+<h4>Add a definition:</h4>
 
-<form action="/word/<%= @album.id %>/songs" method="post">
+<form action="/words/<%= @word.id %>/definitions" method="post">
   <div class="form-group">
-    <label for="def_text">Definition:</label>
-    <input id="def_text" name="def_text" class="form-control" type="text">
-  <button type="submit" class="btn">Add</button>
+    <label for="definition">Song name</label>
+    <input id="definition" name="definition" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Add definition</button>
 </form>
 
 
 
-<p><a href="/words/<%= @word.id %>/edit">change word</a></p>
+<p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
 <p><a href="/words">Return to word list</a></p>
-<p><a href="/words/<%= @word.id %>/edit">change word</a></p>
+<p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
 <a href="/words">Return to word list</a>
