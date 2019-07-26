@@ -14,16 +14,16 @@ get('/words') do
   erb(:words)
 end
 
-get ('/words/new') do
+get ('/word/new') do
   erb(:new_word)
 end
 
-get ('/words/:id') do
+get ('/word/:id') do
   @word = Word.find(params[:id].to_i())
   erb(:word)
 end
 
-post ('/words') do
+post ('/word') do
   word = params[:word]
   word = Word.new(word)
   word.save()
