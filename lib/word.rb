@@ -15,7 +15,7 @@ class Word
   end
 
   def self.all()
-    @@albums.values()
+    @@words.values()
   end
 
   def self.find(id)

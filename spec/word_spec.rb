@@ -7,7 +7,7 @@ describe '#Word' do
   end
   describe '.all' do
     it("returns empty array because nothing has been saved") do
-      expect(Word.all.to(eq([]))
+      expect(Word.all).to(eq([]))
     end
   end
   # describe '#save' do
