@@ -1,5 +1,5 @@
-require 'pry'
-require 'definitions'
+require('pry')
+# require('definitions.rb')
 
 
 class Word

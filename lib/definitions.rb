@@ -1,5 +1,5 @@
 require("pry")
-require("word")
+# require("word")
 
 class Definition
   attr_reader :id

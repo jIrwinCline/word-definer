@@ -2,7 +2,7 @@ require('sinatra')
 require('sinatra/reloader')
 also_reload('lib/**/*.rb')
 require('./lib/word.rb')
-require('./lib/definitions')
+require('./lib/definitions.rb')
 
 get('/') do
   @words = Word.all
@@ -78,7 +78,7 @@ end
 
 post ('/words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
-  definition = Definition.new(params[:definition_spelling], @word.id, nil, params[:definitionwriter])
+  definition = Definition.new(params[:definition], @word.id)
   definition.save()
   erb(:word)
 end

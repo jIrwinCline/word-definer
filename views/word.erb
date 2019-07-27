@@ -1,11 +1,9 @@
-<h4>Word: <%= @word.spelling %></h4>
-
-<h3>Album Songs</h3>
+<h1><%= @word.spelling %></h1>
 
   <% if @word.definitions%>
     <ul>
       <% @word.definitions.each do |definition| %>
-        <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.name %></a></li>
+        <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.text %></a></li>
       <% end %>
     </ul>
   <% else %>
@@ -16,7 +14,7 @@
 
 <form action="/words/<%= @word.id %>/definitions" method="post">
   <div class="form-group">
-    <label for="definition">Song name</label>
+    <label for="definition">Definition</label>
     <input id="definition" name="definition" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Add definition</button>
