@@ -23,7 +23,7 @@ class Definition
   end
 
   def ==(def_to_compare)
-    (self.text() == def_to_compare.text()) && (self.word_id() == def_to_compare.text())
+    (self.text() == def_to_compare.text()) && (self.word_id() == def_to_compare.word_id())
   end
 
   def self.all

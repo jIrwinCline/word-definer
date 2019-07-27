@@ -15,7 +15,7 @@ describe '#Definition' do
   describe('#==') do
     it("is the same definition if it has the same attributes as another definition") do
       definition = Definition.new("definition", @word.id)
-      definition2 = Definition.new("definition", @word.id, nil, "person")
+      definition2 = Definition.new("definition", @word.id)
       expect(definition).to(eq(definition2))
     end
   end
@@ -91,7 +91,7 @@ describe '#Definition' do
    end
  end
  describe('#definitions') do
-    it("returns an word's definitions") do
+    it("returns word's definitions") do
       word = Word.new("this")
       word.save()
       definition = Definition.new("definition", word.id)

@@ -53,7 +53,7 @@ class Word
     @@words.delete(self.id)
   end
 
-  def songs
+  def definitions
     Definition.find_by_word(self.id)
   end
 
