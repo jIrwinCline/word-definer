@@ -29,6 +29,9 @@ _a sinatra webpage that allows users to create their own dictionary by adding wo
 
 _Link to GitHub repo:_
 (https://github.com/jIrwinCline/word-definer.git)
+_Link to Heroku page:_
+(https://serene-bayou-71020.herokuapp.com/ | https://git.heroku.com/serene-bayou-71020.git
+)
 
 
 ### License
